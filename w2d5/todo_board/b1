@@ -1,0 +1,9 @@
+display self.print
+display [index, index - 1]
+display index
+display self[index].title
+display self[index - 1].title
+display amount
+set autoirb false
+set autolist true
+set basename false
