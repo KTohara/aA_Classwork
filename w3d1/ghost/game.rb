@@ -10,7 +10,6 @@ class Game
         @players = players
         @fragment = ""
         @losses = Hash.new { |losses, player| losses[player] = 0 }
-        players.each { |player| losses[player] = 0 }
         words = File.open("dictionary.txt").read.split
         @dictionary ||= Set.new(words)
     end
@@ -72,10 +71,11 @@ class Game
 
     def run
         system("clear")
-        puts "Ghost"
+        puts "-={ Ghost }=-"
         puts "Players must take turns putting a letter into the fragment"
         puts "If a player finishes a word, they lose a round"
-        puts "When a player reaches 5 losses, the game is over"
+        puts "When a player reaches 5 losses, the player is eliminated"
+        puts "Game is over when there is one player left!"
         puts "Press Enter to play"
         enter = gets.chomp
         if enter == ""
@@ -131,7 +131,7 @@ class Game
         puts "#{current_player.name} put '#{guess}' into the fragment"
         sleep(1)
     end
-    private
+    # private
     attr_reader :players, :fragment, :dictionary, :losses
 end
 
